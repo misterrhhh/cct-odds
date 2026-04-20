@@ -135,7 +135,7 @@ wss.on("connection", (socket) => {
   });
 });
 
-server.listen(port, async () => {
+server.listen(port, "0.0.0.0", async () => {
   console.log(`Server listening on http://localhost:${port}`);
   console.log(`Control center: http://localhost:${port}/control-center`);
   console.log(`Live odds: http://localhost:${port}/live-odds`);
