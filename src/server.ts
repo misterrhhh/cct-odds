@@ -54,6 +54,7 @@ const fixturesUrl =
   "https://odds-data.stake.com/sports/counter-strike/international-3/cct-season-3-global-finals-t10/fixtures";
 const configuredFixtureSlug = process.env.FIXTURE_SLUG ?? null;
 const configuredSwapSides = parseBoolean(process.env.SWAP_SIDES) ?? false;
+const oddsRefreshIntervalMs = parsePositiveInt(process.env.ODDS_REFRESH_INTERVAL_MS) ?? 60000;
 const regulationDisplayRounds = new Set([1, 5, 10, 15, 20]);
 const overtimeStartRound = 25;
 const overtimeCycleLength = 6;
@@ -157,6 +158,16 @@ server.listen(port, "0.0.0.0", async () => {
     state.lastError = toErrorMessage(error);
     state.status = "Failed to load fixtures on startup.";
     broadcastSnapshot();
+  }
+
+  if (oddsRefreshIntervalMs !== null) {
+    console.log(`Polling odds every ${oddsRefreshIntervalMs}ms.`);
+    setInterval(() => {
+      if (state.selectedFixtureSlug) {
+        console.log(`[odds] scheduled refresh for ${state.selectedFixtureSlug}`);
+        void refreshOdds(true);
+      }
+    }, oddsRefreshIntervalMs);
   }
 });
 
