@@ -47,7 +47,7 @@ export function LiveOddsPage(): React.JSX.Element | null {
 			<video
 				ref={videoRef}
 				className="video-layer"
-				src="/assets/video.webm"
+				src="/assets/video2.webm"
 				muted
 				playsInline
 				preload="auto"

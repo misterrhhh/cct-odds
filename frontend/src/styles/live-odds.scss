@@ -30,7 +30,7 @@ body {
   font-size: 50px;
   text-align: center;
   width: 60px;
-  top: 26px;
+  top: 140px;
   opacity: 0;
   transition: opacity 300ms;
 
@@ -39,10 +39,10 @@ body {
   }
 
   &.left {
-    left: 833px;
+    left: 768px;
   }
 
   &.right {
-    right: 833px;
+    right: 768px;
   }
 }

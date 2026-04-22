@@ -12,7 +12,7 @@ export default defineConfig({
       "/gsi": {
         target: "http://localhost:9902"
       },
-      "/assets/video.webm": {
+      "/assets/video2.webm": {
         target: "http://localhost:9902"
       }
     }
